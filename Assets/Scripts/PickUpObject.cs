@@ -8,6 +8,7 @@ public class PickUpObject : MonoBehaviour
     public GameObject ObjectToPickUp;
     public GameObject PickedObject;
     public Transform interactionZone;
+    public Vector3 offset;
     
     // Update is called once per frame
     void Update()
@@ -19,7 +20,7 @@ public class PickUpObject : MonoBehaviour
                 PickedObject = ObjectToPickUp;
                 PickedObject.GetComponent<PickableObject>().isPickable = false;
                 PickedObject.transform.SetParent(interactionZone);
-                PickedObject.transform.position = interactionZone.position;
+                PickedObject.transform.position = interactionZone.position + offset;
                 PickedObject.GetComponent<Rigidbody>().useGravity = false;
                 PickedObject.GetComponent<Rigidbody>().isKinematic = true;
             }
